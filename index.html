@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -114,6 +114,8 @@
     max-width: 400px;
     margin-bottom: 36px;
     line-height: 1.75;
+	.container {
+}
   }
 
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -567,6 +569,7 @@
         <span class="info-label">Instagram</span>
         <span class="info-value"><a href="https://www.instagram.com/chengkira2010/" target="_blank" style="color:var(--accent);text-decoration:none;">@chengkira2010</a></span>
       </div>
+	  <img src="Leafbackground.png" style="width:500px; height:300px;">
     </div>
   </div>
 </div>
@@ -577,20 +580,20 @@
   <div class="section-title">My pursuits</div>
 
   <div class="tabs-nav">
-    <button class="tab-btn active" onclick="switchTab('education', this)">🏫 Education</button>
-    <button class="tab-btn" onclick="switchTab('academic', this)">📚 Academic</button>
-    <button class="tab-btn" onclick="switchTab('arts', this)">🎨 Arts &amp; Humanities</button>
-    <button class="tab-btn" onclick="switchTab('others', this)">✨ Others</button>
+    <button class="tab-btn active" onclick="switchTab('education', this)"> Education</button>
+    <button class="tab-btn" onclick="switchTab('academic', this)"> Academic</button>
+    <button class="tab-btn" onclick="switchTab('Electives', this)"> Electives</button>
   </div>
 
   <!-- Education Tab -->
   <div class="tab-panel active" id="tab-education">
     <div class="cards-grid">
       <div class="card reveal">
-        <div class="card-icon">📚</div>
+        <div class="card-icon">🏫</div>
         <div class="card-title">River Valley Primary</div>
         <div class="card-desc">My primary education at River Valley Primary School, where I developed a strong foundation in core subjects and discovered my love for learning.</div>
         <div class="card-tags">
+		<img src="River Valley.jpg" style="width:250px; height:200px;">
           <span class="tag highlight">Primary School</span>
           <span class="tag">Singapore</span>
         </div>
@@ -600,6 +603,7 @@
         <div class="card-title">Dunman High School</div>
         <div class="card-desc">Currently studying at Dunman High School, one of Singapore's top secondary schools. Pursuing a well-rounded education with focus on both arts and sciences.</div>
         <div class="card-tags">
+			  <img src="Dunman-High.jpg" style="width:250px; height:200px;">
           <span class="tag highlight">Secondary School</span>
           <span class="tag">Singapore</span>
         </div>
@@ -647,71 +651,23 @@
         <div class="hcard-left">
           <div class="hcard-icon">📝</div>
           <div>
-            <div class="hcard-title">Add a subject or result</div>
-            <div class="hcard-sub">e.g. Mathematics · A+</div>
+            <div class="hcard-title">-</div>
+            <div class="hcard-sub">-</div>
           </div>
         </div>
         <div class="hcard-right">
-          <div class="hcard-desc">Describe the subject, what you enjoy about it, or any notable results. Replace this text with your own!</div>
-          <div class="card-tags" style="margin-top:12px"><span class="tag highlight">Your subject</span></div>
+          <div class="hcard-desc">-</div>
+          <div class="card-tags" style="margin-top:12px"><span class="tag highlight">-</span></div>
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- Arts & Humanities Tab -->
-  <div class="tab-panel" id="tab-arts">
-    <div class="hlist">
+  
 
-      <div class="hcard reveal">
-        <div class="hcard-left">
-          <div class="hcard-icon">🎨</div>
-          <div>
-            <div class="hcard-title">Add your art here</div>
-            <div class="hcard-sub">e.g. Visual Art · Watercolour</div>
-          </div>
-        </div>
-        <div class="hcard-right">
-          <div class="hcard-desc">Describe an artwork, project, or style you enjoy. For example: "I enjoy watercolour painting and often paint landscapes from around Singapore."</div>
-          <div class="card-tags" style="margin-top:12px"><span class="tag highlight">Art</span><span class="tag">Add your medium</span></div>
-        </div>
-      </div>
-
-      <div class="hcard reveal">
-        <div class="hcard-left">
-          <div class="hcard-icon">✍️</div>
-          <div>
-            <div class="hcard-title">Humanities</div>
-            <div class="hcard-sub">e.g. History · Literature</div>
-          </div>
-        </div>
-        <div class="hcard-right">
-          <div class="hcard-desc">Add a humanities subject or project here — e.g. History, Literature, Social Studies, or a piece of writing you're proud of.</div>
-          <div class="card-tags" style="margin-top:12px"><span class="tag highlight">Humanities</span></div>
-        </div>
-      </div>
-
-      <!-- TEMPLATE: copy this block to add more -->
-      <div class="hcard reveal">
-        <div class="hcard-left">
-          <div class="hcard-icon">🖼️</div>
-          <div>
-            <div class="hcard-title">Another piece or project</div>
-            <div class="hcard-sub">Add your own subtitle</div>
-          </div>
-        </div>
-        <div class="hcard-right">
-          <div class="hcard-desc">Describe it here. You can also mention if it's on your Instagram so people can see it!</div>
-          <div class="card-tags" style="margin-top:12px"><span class="tag">Your tag</span></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Others Tab -->
-  <div class="tab-panel" id="tab-others">
+  <!-- Eledctives Tab -->
+  <div class="tab-panel" id="tab-Electives">
     <div class="achievement reveal">
       <div class="ach-icon">🏅</div>
       <div>
