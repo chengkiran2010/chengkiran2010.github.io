@@ -887,15 +887,133 @@
   /* ensure section content stays above shapes */
   .section-wrap, #hero, #contact-wrap { position: relative; z-index: 1; }
 
+  /* ── HAMBURGER MENU ── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 8px;
+    transition: background 0.2s;
+    z-index: 200;
+  }
+  .hamburger:hover { background: var(--accent-light); }
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
-    nav { padding: 14px 20px; }
-    .nav-links { gap: 16px; }
-    #hero { grid-template-columns: 1fr; padding: 48px 20px 40px; gap: 32px; }
-    .section-wrap { padding: 60px 20px; }
-    #contact-wrap { padding: 60px 20px 80px; }
-    footer { padding: 16px 20px; flex-direction: column; gap: 4px; }
-    .ticker-wrap { padding: 14px 20px; }
+    /* Nav */
+    nav {
+      padding: 14px 20px;
+      position: relative;
+    }
+    .hamburger { display: flex; }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      position: absolute;
+      top: 100%;
+      left: 0; right: 0;
+      background: rgba(238,246,252,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 20px 20px;
+      box-shadow: 0 8px 24px rgba(13,59,110,0.1);
+      z-index: 150;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a {
+      padding: 12px 4px;
+      font-size: 15px;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-links a:last-child { border-bottom: none; }
+    .nav-dot { display: none; }
+
+    /* Hero */
+    #hero {
+      grid-template-columns: 1fr;
+      padding: 40px 20px 36px;
+      gap: 28px;
+    }
+    h1 { font-size: clamp(36px, 10vw, 52px); letter-spacing: -1px; }
+    .hero-sub { font-size: 15px; }
+    .hero-actions { flex-direction: column; gap: 10px; }
+    .hero-actions .btn { justify-content: center; text-align: center; }
+    .hero-card { padding: 24px 20px; }
+
+    /* Sections */
+    .section-wrap { padding: 48px 20px; }
+    .section-title { font-size: 28px; margin-bottom: 32px; }
+    #contact-wrap { padding: 48px 20px 64px; }
+
+    /* Tabs — scrollable row */
+    .tabs-nav {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      flex-wrap: nowrap;
+      scrollbar-width: none;
+    }
+    .tabs-nav::-webkit-scrollbar { display: none; }
+    .tab-btn { padding: 9px 16px; font-size: 12px; white-space: nowrap; }
+
+    /* Cards */
+    .cards-grid { grid-template-columns: 1fr; }
+    .card { padding: 20px; }
+
+    /* Achievement items */
+    .achievement { flex-direction: column; gap: 12px; padding: 18px 16px; }
+    .ach-icon { width: 40px; height: 40px; font-size: 18px; }
+
+    /* Grade/hcard */
+    .hcard { flex-direction: column; gap: 16px; padding: 18px 16px; }
+    .hcard-left { min-width: unset; }
+    .grade-label { font-size: 11px; width: 32px; }
+
+    /* About */
+    .about-bio { font-size: 16px; padding: 20px; }
+    .strength-grid { grid-template-columns: 1fr; }
+    .about-section-body { padding: 16px; }
+
+    /* Ticker */
+    .ticker-wrap { padding: 12px 20px; }
+
+    /* Footer */
+    footer {
+      padding: 16px 20px;
+      flex-direction: column;
+      gap: 4px;
+      text-align: center;
+    }
+
+    /* Shapes layer — tone down on mobile */
+    .shapes-layer { opacity: 0.6; }
+  }
+
+  @media (max-width: 400px) {
+    h1 { font-size: 32px; }
+    .hero-badge { font-size: 10px; }
+    .hero-card .hero-avatar { width: 56px; height: 56px; font-size: 22px; }
   }
 </style>
 </head>
@@ -928,8 +1046,11 @@
 
 <!-- ── NAV ── -->
 <nav>
-  <div class="logo">Kiran Cheng.</div>
-  <div class="nav-links">
+  <a href="#" class="logo" style="text-decoration:none;">Kiran Cheng.</a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
     <div class="nav-dot"></div>
     <a href="#pursuits">Pursuits</a>
     <a href="#about">About</a>
@@ -1241,6 +1362,23 @@
 </footer>
 
 <script>
+// ── Hamburger menu ──
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  hamburger.setAttribute('aria-expanded', isOpen);
+});
+// Close menu when a link is clicked
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', false);
+  });
+});
+
 // ── Cursor glow ──
 const glow = document.getElementById('cursorGlow');
 document.addEventListener('mousemove', e => {
@@ -1296,7 +1434,12 @@ function toggleAch(btn) {
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
-    document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+    const href = a.getAttribute('href');
+    if (href === '#') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    }
   });
 });
 
