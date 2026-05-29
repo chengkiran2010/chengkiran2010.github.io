@@ -17,9 +17,9 @@
     --muted: #6b6b60;
     --tag-bg: #f0ede6;
   }
-
+ 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
   body {
     background: var(--bg);
     color: var(--text);
@@ -27,7 +27,7 @@
     font-size: 15px;
     line-height: 1.7;
   }
-
+ 
   /* Nav */
   nav {
     position: sticky;
@@ -41,14 +41,14 @@
     padding: 16px 48px;
     z-index: 100;
   }
-
+ 
   .logo {
     font-family: 'Playfair Display', serif;
     font-size: 22px;
     color: var(--accent);
     letter-spacing: -0.3px;
   }
-
+ 
   .nav-links { display: flex; gap: 28px; }
   .nav-links a {
     color: var(--muted);
@@ -58,7 +58,7 @@
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--accent); }
-
+ 
   /* Hero */
   #hero {
     padding: 90px 48px 80px;
@@ -69,9 +69,9 @@
     max-width: 1100px;
     margin: 0 auto;
   }
-
+ 
   .hero-left {}
-
+ 
   .hero-badge {
     display: inline-flex;
     align-items: center;
@@ -86,14 +86,14 @@
     border-radius: 20px;
     margin-bottom: 24px;
   }
-
+ 
   .hero-badge::before {
     content: '';
     width: 7px; height: 7px;
     background: var(--accent);
     border-radius: 50%;
   }
-
+ 
   h1 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(44px, 5vw, 64px);
@@ -102,12 +102,12 @@
     color: var(--text);
     margin-bottom: 20px;
   }
-
+ 
   h1 em {
     color: var(--accent);
     font-style: italic;
   }
-
+ 
   .hero-sub {
     color: var(--muted);
     font-size: 16px;
@@ -117,9 +117,9 @@
 	.container {
 }
   }
-
+ 
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-
+ 
   .btn {
     padding: 12px 24px;
     font-family: 'Plus Jakarta Sans', sans-serif;
@@ -131,13 +131,13 @@
     transition: all 0.2s;
     display: inline-block;
   }
-
+ 
   .btn-primary { background: var(--accent); color: #fff; border: none; }
   .btn-primary:hover { background: #245a41; transform: translateY(-1px); }
-
+ 
   .btn-ghost { background: transparent; color: var(--text); border: 1.5px solid var(--border); }
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
-
+ 
   /* Hero card */
   .hero-card {
     background: var(--surface);
@@ -146,7 +146,7 @@
     padding: 36px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.05);
   }
-
+ 
   .hero-avatar {
     width: 72px; height: 72px;
     background: var(--accent-light);
@@ -159,22 +159,22 @@
     color: var(--accent);
     margin-bottom: 20px;
   }
-
+ 
   .hero-card h2 {
     font-family: 'Playfair Display', serif;
     font-size: 22px;
     font-weight: 600;
     margin-bottom: 6px;
   }
-
+ 
   .hero-card .card-sub {
     color: var(--muted);
     font-size: 13px;
     margin-bottom: 24px;
   }
-
+ 
   .info-rows { display: flex; flex-direction: column; gap: 12px; }
-
+ 
   .info-row {
     display: flex;
     justify-content: space-between;
@@ -182,11 +182,11 @@
     border-bottom: 1px solid var(--border);
     font-size: 13px;
   }
-
+ 
   .info-row:last-child { border-bottom: none; padding-bottom: 0; }
   .info-label { color: var(--muted); }
   .info-value { color: var(--text); font-weight: 500; text-align: right; max-width: 55%; }
-
+ 
   /* Sections */
   .section-wrap {
     max-width: 1100px;
@@ -194,7 +194,7 @@
     padding: 80px 48px;
     border-top: 1px solid var(--border);
   }
-
+ 
   .section-label {
     font-size: 11px;
     letter-spacing: 0.14em;
@@ -203,7 +203,7 @@
     font-weight: 600;
     margin-bottom: 12px;
   }
-
+ 
   .section-title {
     font-family: 'Playfair Display', serif;
     font-size: 36px;
@@ -211,7 +211,7 @@
     margin-bottom: 48px;
     color: var(--text);
   }
-
+ 
   /* TABS */
   .tabs-nav {
     display: flex;
@@ -223,7 +223,7 @@
     width: fit-content;
     flex-wrap: wrap;
   }
-
+ 
   .tab-btn {
     padding: 10px 22px;
     border: none;
@@ -237,27 +237,27 @@
     transition: all 0.2s;
     white-space: nowrap;
   }
-
+ 
   .tab-btn.active {
     background: var(--surface);
     color: var(--accent);
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   }
-
+ 
   .tab-btn:hover:not(.active) { color: var(--text); }
-
+ 
   .tab-panel { display: none; animation: fadeIn 0.3s ease; }
   .tab-panel.active { display: block; }
-
+ 
   @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-
+ 
   /* Cards */
   .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
   }
-
+ 
   .card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -265,13 +265,13 @@
     padding: 28px;
     transition: all 0.25s;
   }
-
+ 
   .card:hover {
     border-color: var(--accent2);
     box-shadow: 0 8px 28px rgba(45,106,79,0.1);
     transform: translateY(-2px);
   }
-
+ 
   .card-icon {
     width: 44px; height: 44px;
     background: var(--accent-light);
@@ -282,7 +282,7 @@
     font-size: 20px;
     margin-bottom: 16px;
   }
-
+ 
   .card-title {
     font-family: 'Playfair Display', serif;
     font-size: 19px;
@@ -290,16 +290,16 @@
     margin-bottom: 8px;
     color: var(--text);
   }
-
+ 
   .card-desc {
     color: var(--muted);
     font-size: 13px;
     line-height: 1.65;
     margin-bottom: 16px;
   }
-
+ 
   .card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-
+ 
   .tag {
     background: var(--tag-bg);
     color: var(--muted);
@@ -309,12 +309,12 @@
     padding: 3px 10px;
     border-radius: 20px;
   }
-
+ 
   .tag.highlight {
     background: var(--accent-light);
     color: var(--accent);
   }
-
+ 
   /* Achievement badge */
   .achievement {
     display: flex;
@@ -327,24 +327,24 @@
     margin-bottom: 12px;
     transition: all 0.2s;
   }
-
+ 
   .achievement:hover { border-color: var(--accent2); }
-
+ 
   .ach-icon {
     font-size: 24px;
     flex-shrink: 0;
     margin-top: 2px;
   }
-
+ 
   .ach-title {
     font-weight: 600;
     font-size: 14px;
     color: var(--text);
     margin-bottom: 3px;
   }
-
+ 
   .ach-desc { color: var(--muted); font-size: 13px; }
-
+ 
   /* About */
   .about-grid {
     display: grid;
@@ -352,7 +352,7 @@
     gap: 60px;
     align-items: start;
   }
-
+ 
   .about-bio {
     font-family: 'Playfair Display', serif;
     font-size: 20px;
@@ -360,9 +360,9 @@
     color: var(--muted);
     font-style: italic;
   }
-
+ 
   .about-bio strong { color: var(--text); font-style: normal; }
-
+ 
   /* Contact */
   #contact-wrap {
     text-align: center;
@@ -371,20 +371,20 @@
     max-width: 1100px;
     margin: 0 auto;
   }
-
+ 
   .contact-title {
     font-family: 'Playfair Display', serif;
     font-size: clamp(38px, 5vw, 56px);
     letter-spacing: -1.5px;
     margin-bottom: 16px;
   }
-
+ 
   .contact-title em { color: var(--accent); font-style: italic; }
-
+ 
   .contact-sub { color: var(--muted); margin-bottom: 40px; font-size: 15px; }
-
+ 
   .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
-
+ 
   .contact-chip {
     display: inline-flex;
     align-items: center;
@@ -399,9 +399,9 @@
     font-weight: 600;
     transition: all 0.2s;
   }
-
+ 
   .contact-chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-
+ 
   footer {
     border-top: 1px solid var(--border);
     padding: 20px 48px;
@@ -410,11 +410,11 @@
     color: var(--muted);
     font-size: 12px;
   }
-
+ 
   /* Scroll reveal */
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
-
+ 
   /* Responsive */
   @media (max-width: 768px) {
     nav { padding: 14px 20px; }
@@ -427,7 +427,7 @@
   }
   /* Horizontal list cards */
   .hlist { display: flex; flex-direction: column; gap: 14px; }
-
+ 
   .hcard {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -438,13 +438,13 @@
     gap: 32px;
     transition: all 0.25s;
   }
-
+ 
   .hcard:hover {
     border-color: var(--accent2);
     box-shadow: 0 6px 24px rgba(45,106,79,0.08);
     transform: translateX(4px);
   }
-
+ 
   .hcard-left {
     display: flex;
     align-items: center;
@@ -452,7 +452,7 @@
     min-width: 220px;
     flex-shrink: 0;
   }
-
+ 
   .hcard-icon {
     width: 44px; height: 44px;
     background: var(--accent-light);
@@ -463,7 +463,7 @@
     font-size: 20px;
     flex-shrink: 0;
   }
-
+ 
   .hcard-title {
     font-family: 'Playfair Display', serif;
     font-size: 17px;
@@ -471,13 +471,13 @@
     color: var(--text);
     margin-bottom: 3px;
   }
-
+ 
   .hcard-sub { font-size: 12px; color: var(--muted); }
-
+ 
   .hcard-right { flex: 1; }
-
+ 
   .hcard-desc { color: var(--muted); font-size: 13px; line-height: 1.65; }
-
+ 
   /* Grade bars */
   .grade-row {
     display: flex;
@@ -485,7 +485,7 @@
     gap: 10px;
     margin-bottom: 8px;
   }
-
+ 
   .grade-label {
     font-size: 12px;
     font-weight: 600;
@@ -493,7 +493,7 @@
     width: 32px;
     flex-shrink: 0;
   }
-
+ 
   .grade-bar-wrap {
     flex: 1;
     height: 6px;
@@ -501,7 +501,7 @@
     border-radius: 99px;
     overflow: hidden;
   }
-
+ 
   .grade-bar {
     height: 100%;
     width: 0;
@@ -509,7 +509,7 @@
     border-radius: 99px;
     transition: width 1s cubic-bezier(0.16,1,0.3,1);
   }
-
+ 
   .grade-num {
     font-size: 12px;
     color: var(--muted);
@@ -517,16 +517,90 @@
     text-align: right;
     flex-shrink: 0;
   }
-
+ 
   @media (max-width: 768px) {
     .hcard { flex-direction: column; gap: 16px; }
     .hcard-left { min-width: unset; }
+  }
+ 
+  /* About sections */
+  .about-section {
+    max-width: 860px;
+    margin: 0 auto 48px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .about-section-label {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 14px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .about-section-body {
+    padding: 24px;
+    background: var(--surface);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  .about-section-body p {
+    margin-bottom: 12px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px;
+    color: var(--muted);
+  }
+
+  .about-section-body p:last-child { margin-bottom: 0; }
+
+  .strength-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+  }
+
+  .strength-item {
+    background: var(--accent-light);
+    border-radius: 12px;
+    padding: 18px 20px;
+    border-left: 3px solid var(--accent);
+  }
+
+  .strength-item.weakness {
+    background: #fff8f0;
+    border-left-color: #e08c3a;
+  }
+
+  .strength-item.goal {
+    background: #f0f4ff;
+    border-left-color: #4a6fa8;
+  }
+
+  .strength-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .strength-desc {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
   }
 
 </style>
 </head>
 <body>
-
+ 
 <nav>
   <div class="logo">Kiran Cheng.</div>
   <div class="nav-links">
@@ -535,7 +609,7 @@
     <a href="#contact">Contact</a>
   </div>
 </nav>
-
+ 
 <!-- Hero -->
 <div id="hero">
   <div class="hero-left">
@@ -547,7 +621,7 @@
       <a href="https://www.instagram.com/chengkira2010/" target="_blank" class="btn btn-ghost">Instagram</a>
     </div>
   </div>
-
+ 
   <div class="hero-card reveal">
     <div class="hero-avatar">K</div>
     <h2>Kiran Cheng Shou Shan</h2>
@@ -569,22 +643,22 @@
         <span class="info-label">Instagram</span>
         <span class="info-value"><a href="https://www.instagram.com/chengkira2010/" target="_blank" style="color:var(--accent);text-decoration:none;">@chengkira2010</a></span>
       </div>
-	  <img src="Leafbackground.png" style="width:500px; height:300px;">
+	  <img src="Leafbackground.png" style="width:100%; height:auto; border-radius:12px; margin-top:16px;">
     </div>
   </div>
 </div>
-
+ 
 <!-- Pursuits (Tabbed) -->
 <div class="section-wrap" id="pursuits">
   <div class="section-label">What I do</div>
   <div class="section-title">My pursuits</div>
-
+ 
   <div class="tabs-nav">
     <button class="tab-btn active" onclick="switchTab('education', this)"> Education</button>
     <button class="tab-btn" onclick="switchTab('academic', this)"> Academic</button>
     <button class="tab-btn" onclick="switchTab('Electives', this)"> Electives</button>
   </div>
-
+ 
   <!-- Education Tab -->
   <div class="tab-panel active" id="tab-education">
     <div class="cards-grid">
@@ -592,8 +666,8 @@
         <div class="card-icon">🏫</div>
         <div class="card-title">River Valley Primary</div>
         <div class="card-desc">My primary education at River Valley Primary School, where I developed a strong foundation in core subjects and discovered my love for learning.</div>
+        <img src="RiverValley.jpg" alt="River Valley Primary School" style="width:100%; height:auto; border-radius:10px; margin:12px 0;">
         <div class="card-tags">
-		<img src="RiverValley.jpg" style="width:250px; height:200px;">
           <span class="tag highlight">Primary School</span>
           <span class="tag">Singapore</span>
         </div>
@@ -602,19 +676,19 @@
         <div class="card-icon">🏫</div>
         <div class="card-title">Dunman High School</div>
         <div class="card-desc">Currently studying at Dunman High School, one of Singapore's top secondary schools. Pursuing a well-rounded education with focus on both arts and sciences.</div>
+        <img src="DunmanHigh.jpg" alt="Dunman High School" style="width:100%; height:auto; border-radius:10px; margin:12px 0;">
         <div class="card-tags">
-			  <img src="DunmanHigh.jpg" style="width:250px; height:200px;">
           <span class="tag highlight">Secondary School</span>
           <span class="tag">Singapore</span>
         </div>
       </div>
     </div>
   </div>
-
+ 
   <!-- Academic Tab -->
   <div class="tab-panel" id="tab-academic">
     <div class="hlist">
-
+ 
       <div class="hcard reveal">
         <div class="hcard-left">
           <div class="hcard-icon">✏️</div>
@@ -630,7 +704,7 @@
           <div class="grade-row"><span class="grade-label">B</span><div class="grade-bar-wrap"><div class="grade-bar" style="--w:4%;background:var(--accent2)"></div></div><span class="grade-num">3</span></div>
         </div>
       </div>
-
+ 
       <div class="hcard reveal">
         <div class="hcard-left">
           <div class="hcard-icon">📊</div>
@@ -645,7 +719,7 @@
           <div class="grade-row"><span class="grade-label">Year 3</span><div class="grade-bar-wrap"><div class="grade-bar" style="--w:80%"></div></div><span class="grade-num">3.88</span></div>
         </div>
       </div>
-
+ 
       <!-- TEMPLATE: copy this block to add a new academic entry -->
       <div class="hcard reveal">
         <div class="hcard-left">
@@ -660,12 +734,12 @@
           <div class="card-tags" style="margin-top:12px"><span class="tag highlight">-</span></div>
         </div>
       </div>
-
+ 
     </div>
   </div>
-
+ 
   
-
+ 
   <!-- Eledctives Tab -->
   <div class="tab-panel" id="tab-Electives">
     <div class="achievement reveal">
@@ -673,7 +747,7 @@
       <div>
         <div class="ach-title">Art special programme (ASP)</div>
         <div class="ach-desc">The art special progmmme was enriching not only in developing my technical competencies in art, but also in teaching my transferable skills like acute observation and attention to detail. These skills were valuable in many other areas, such as analysing data and spotting trends for Geography. Such habits will stay with me both in my art making processes and in my academic pursuits.</div>
-		<img src="ASP.png" style="width:700px; height:400px;"> 
+		<img src="ASP.png" alt="Art Special Programme" style="width:100%; height:auto; border-radius:10px; margin:12px 0;">
 		<a href> https://www.dunmanhigh.moe.edu.sg/academic/aesthetics-programme/ </a href>
        <div class="ach-desc"><em>I got featured on the school website</em><p>The Art Special Programme (ASP) is a platform for students who are committed and passionate about Art to further their Art education beyond the compulsory Art subject. Taken as an examinable subject in Years 1-4, it provides students with deeper understanding of various art elements and design principles, and possibilities to explore a wider range of media and techniques. ASP students are also given opportunities to visit museums and platforms to showcase their talents through exhibitions.</p>
 	  </div>
@@ -684,12 +758,12 @@
       <div>
         <div class="ach-title">Bicultural studies programme(BSP)</div>
         <div class="ach-desc">The bicultural studies programme was an eye opening experience as I learnt more about geopolitical tensions, especially the Sino-American tensions.The highlight wasthat theclasses were conducted in Chinese only, giving me the opportunity to enhance my mother tongue abilities. This programme was also particularly valuable as it provided overseas experience opportunities. I  personally attended the Taiwan immersion programme which opened my eyes to the wider markets out there. I was also glad to learn more about big tech and  manufacturing companies there, am experience I would not have had if I went by myself. Overall, BSP was extremely enriching and honed my language and understanding skills. It also furthur improved my attention to detail needed to understand political nuances.</div>
-		<img src="BSP.png" style="width:650px; height:400px;">  
+		<img src="BSP.png" alt="Bicultural Studies Programme" style="width:100%; height:auto; border-radius:10px; margin:12px 0;">
 		<a href>https://www.dunmanhigh.moe.edu.sg/academic/mtl/</a href>
 		<div class="ach-desc">The Bicultural Studies Programme (MOE) [BSP] is a 4-year programme offered by MOE that spans from Year 3 (Sec 3) to Year 6 (JC 2). It aims to develop bicultural and bilingual talents who can effectively interact with China and the West and have the capacity to engage in key issues relating to contemporary China with cross-cultural perspectives.
-
+ 
 Students from the BSP will jointly participate in two signature activities organised by MOE, including a three-day camp held locally during the June holidays of Year 3 and the annual BSP Symposium during the March holidays of Year 4 and 5. School based enrichment programmes include overseas immersions, learning journeys, inter-school forums, and lectures.</div>
-
+ 
 	 </div>
     </div>
     <div class="achievement reveal">
@@ -697,7 +771,7 @@ Students from the BSP will jointly participate in two signature activities organ
       <div>
         <div class="ach-title">NUS Geography Challenge</div>
         <div class="ach-desc"><p>This was really one of the highlights of my year and I feel it is one of the best opportunities I have had</p>Although we had not achieved the resutls we wanted, I managed to secure a silverinthe individual category. This was a disappointment to us all. Howeve, this programme really tested my determination and resilience with two training sessions perweeek learning about new concepts. I really appreciatethe  great guidance of our teachers, Ms Ng and Ms Pear and the friendsI madein this  programme. This is certainly not the end to my Geography journey as I will have the Geeographers spirit of inquisitivity in me forever. It also let me widen my options to  consider taking Geography instead of Economics, but I am still deciding</div>.
-		<img src="NUSGeography.jpg" style="width:650px; height:400px;">  
+		<img src="NUSGeography.jpg" alt="NUS Geography Challenge" style="width:100%; height:auto; border-radius:10px; margin:12px 0;">
 		<a href>https://nusgeographychallenge.wordpress.com/ </a href>
 		<div class="ach-desc">NUS Geography Challenge is an annual Geography competition organised by the NUS Department of Geography and NUS Geographical Society, with support from the Ministry of Education. This year, we are proud to continue the 30th iteration of the Geography Challenge in 2026. NUS GC continues our quest to ignite the passion of secondary school students and inspire them to develop a keen interest in the dynamic discipline of Geography. Through this challenge, students will learn about world issues and how Geography can empower them to respond to these issues.
 	  </div>
@@ -712,22 +786,107 @@ Students from the BSP will jointly participate in two signature activities organ
     </div>
   </div>
 </div>
-
+ 
 <!-- About -->
 <div class="section-wrap" id="about">
   <div class="section-label">Who I am</div>
   <div class="section-title">About me</div>
-  <div class="about-grid">
+
+  <!-- Intro -->
+  <div style="max-width:680px; margin:0 auto; text-align:center;">
     <div class="about-bio reveal">
-      I'm <strong>Kiran Cheng Shou Shan</strong>, a student from <strong>Singapore</strong> with a curiosity for the world around me. I love exploring <strong>art, science, and academics</strong> — follow me on  theis journey as I make choices - <strong> both big and small</strong>- throughout this journey. And yes - I learnt CSS just to make this website.
-      <br><br>
-      <!-- ADD MORE ABOUT YOURSELF HERE — e.g. your hobbies, what you enjoy doing after school, your goals -->
-     
-<img src="Picture.png" style="width:500px; height:400px; display:block; margin-left:auto;">	  <alt>I still have not learnt how to  make the picture scroll so theres only one for now </alt>
+      I'm <strong>Kiran Cheng Shou Shan</strong>, a student from <strong>Singapore</strong> with a curiosity for the world around me. I love exploring <strong>art, science, and academics</strong> — follow me on this journey as I make choices - <strong>both big and small</strong> - throughout this journey. And yes - I learnt CSS just to make this website.
+    </div>
+    <img src="Picture.png" alt="A photo" style="width:80%; height:auto; border-radius:16px; margin:28px auto 16px; display:block;">
+    <p style="color:var(--muted); font-size:13px; margin-bottom:60px; font-style:italic;">I still have not learnt how to make the picture scroll so there's only one for now</p>
+  </div>
+
+  <!-- Self Introduction -->
+  <div class="about-section reveal">
+    <div class="about-section-label"><h2> Self Introduction</h2></div>
+    <div class="about-section-body">
+      <p>I would describe myself as more of an all-rounder. Although it means I am above average in most fields, I am still trying to find my specialty — which is why I have taken part in five electives on a range of topics.</p>
+      <p>While some may call it being indecisive, each programme contributes to a unique part of myself and together, I feel enriched with new skill sets and knowledge.</p>
+      <p>Honestly, I enjoy studying to a certain extent. It gives me certainty and a sense of structure which I lack.</p>
+      <p>My goal for this semester would be to be more organised and consistent — this would mean handing in assignments on time, which I struggle with, and handling deadlines in an increasingly hectic term.</p>
     </div>
   </div>
-</div>
 
+  <!-- Strengths -->
+  <div class="about-section reveal">
+    <div class="about-section-label"> <h2>Strengths</h2></div>
+    <div class="about-section-body">
+      <div class="strength-grid">
+        <div class="strength-item">
+          <div class="strength-title">Curiosity</div>
+          <div class="strength-desc">I enjoy learning across many different fields — from art to geopolitics — and am always eager to explore new ideas.</div>
+        </div>
+        <div class="strength-item">
+          <div class="strength-title">Attention to detail</div>
+          <div class="strength-desc">Developed through the Art Special Programme, this skill carries over into academics like Geography and data analysis.</div>
+        </div>
+		<div class="strength-item">
+          <div class="strength-title">Adaptability</div>
+          <div class="strength-desc">I am flexible to changes and do as much as I can to make sure the situation is a success</div>
+		  </div>
+        <div class="strength-item">
+          <div class="strength-title">Resilience</div>
+          <div class="strength-desc">Taking on multiple electives and intensive programmes like BSP and the NUS Geography Challenge has taught me to push through challenges.</div>
+        </div>
+		<div>
+        <div class="strength-item">
+          <div class="strength-title">Bilingual ability</div>
+          <div class="strength-desc">The BSP programme sharpened my Chinese language skills, giving me the ability to engage with content in both English and Chinese.</div>
+		  <div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+.strength-item.bitch {
+  background: #dbeafe;
+  border-color: #60a5fa;
+}
+  <!-- Weaknesses -->
+  <div class="about-section reveal">
+    <div class="about-section-label"><h2> Areas I'm working on</h2></div>
+    <div class="about-section-body">
+      <div class="strength-grid">
+        <div class="strength-item weakness">
+          <div class="strength-title">Organisation</div>
+          <div class="strength-desc">I sometimes struggle to keep things organised. Although tasks are fufilled, sometimes they may not be to my satisfaction</div>
+        </div>
+        <div class="strength-item bitch">
+          <div class="strength-title">Finding my specialty</div>
+          <div class="strength-desc">Being an all-rounder is both a strength and a challenge — I am still figuring out which field I am most passionate about.</div>
+        </div>
+        <div class="strength-item weakness">
+          <div class="strength-title">Consistency</div>
+          <div class="strength-desc">My goal this semester is to be more organised and consistent in my habits, both in and outside of school.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Goals -->
+  <div class="about-section reveal">
+    <div class="about-section-label">🎯 Goals</div>
+    <div class="about-section-body">
+      <div class="strength-grid">
+        <div class=strength-item>
+          <div class="strength-title">Short term</div>
+          <div class="strength-desc">Be more organised this semester — hand in assignments on time and manage deadlines better as school gets more hectic.</div>
+        </div>
+        <div class=strength-item
+          <div class="strength-title">Long term</div>
+          <div class="strength-desc">Discover my specialty and decide on a path — whether that is Geography, Economics, Art, or something else entirely.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+ 
 <!-- Contact -->
 <div id="contact-wrap">
   <div class="section-label">Say hello</div>
@@ -744,12 +903,12 @@ Students from the BSP will jointly participate in two signature activities organ
     </a>
   </div>
 </div>
-
+ 
 <footer>
   <span>© 2026 Kiran Cheng Shou Shan</span>
   <span>Built with HTML & CSS · Hosted on GitHub Pages</span>
 </footer>
-
+ 
 <script>
 // Tab switching — btn is passed directly so it works in all browsers
 function switchTab(name, btn) {
@@ -757,7 +916,7 @@ function switchTab(name, btn) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
   btn.classList.add('active');
-
+ 
   // Trigger reveal for newly visible cards
   setTimeout(() => {
     document.querySelectorAll('#tab-' + name + ' .reveal').forEach(el => el.classList.add('visible'));
@@ -766,23 +925,23 @@ function switchTab(name, btn) {
     });
   }, 50);
 }
-
+ 
 // Scroll reveal
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
   });
 }, { threshold: 0.1 });
-
+ 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
+ 
 // Animate grade bars in the first active tab on load
 setTimeout(() => {
   document.querySelectorAll('.tab-panel.active .grade-bar').forEach(bar => {
     bar.style.width = bar.style.getPropertyValue('--w') || getComputedStyle(bar).getPropertyValue('--w');
   });
 }, 300);
-
+ 
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
