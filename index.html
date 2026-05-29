@@ -4,152 +4,256 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kiran Cheng — Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #faf9f6;
+    --bg: #eef6fc;
+    --bg2: #daeef8;
     --surface: #ffffff;
-    --border: #e8e4dc;
-    --accent: #2d6a4f;
-    --accent2: #74c69d;
-    --accent-light: #d8f3dc;
-    --text: #1a1a18;
-    --muted: #6b6b60;
-    --tag-bg: #f0ede6;
+    --surface2: #f0f8fd;
+    --border: #c6dff0;
+    --accent: #0d3b6e;       /* deep navy */
+    --accent2: #2176ae;      /* mid blue */
+    --accent3: #3db8c8;      /* teal */
+    --accent4: #6dd5e0;      /* light teal */
+    --accent-light: #d0edf8;
+    --teal-dark: #1c6870;
+    --cream: #f5f0e8;
+    --text: #0b2035;
+    --muted: #4a6d87;
+    --tag-bg: #d4eaf5;
+    --warm: #e8f4fb;
   }
- 
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
+  html { scroll-behavior: smooth; }
+
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 15px;
     line-height: 1.7;
+    overflow-x: hidden;
   }
- 
-  /* Nav */
+
+  /* ── CURSOR GLOW ── */
+  .cursor-glow {
+    position: fixed;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(61,184,200,0.10) 0%, transparent 70%);
+    pointer-events: none;
+    transform: translate(-50%,-50%);
+    transition: left 0.15s ease, top 0.15s ease;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
   nav {
     position: sticky;
     top: 0;
-    background: rgba(250,249,246,0.92);
-    backdrop-filter: blur(12px);
+    background: rgba(238,246,252,0.88);
+    backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 48px;
+    padding: 16px 52px;
     z-index: 100;
   }
- 
+
   .logo {
     font-family: 'Playfair Display', serif;
     font-size: 22px;
     color: var(--accent);
     letter-spacing: -0.3px;
+    font-style: italic;
   }
- 
-  .nav-links { display: flex; gap: 28px; }
+
+  .nav-links { display: flex; gap: 28px; align-items: center; }
   .nav-links a {
     color: var(--muted);
     text-decoration: none;
     font-size: 13px;
     font-weight: 500;
     transition: color 0.2s;
+    position: relative;
   }
-  .nav-links a:hover { color: var(--accent); }
- 
-  /* Hero */
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent3);
+    transform: scaleX(0);
+    transition: transform 0.2s;
+    border-radius: 2px;
+  }
+  .nav-links a:hover { color: var(--accent2); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .nav-dot {
+    width: 8px; height: 8px;
+    background: var(--accent3);
+    border-radius: 50%;
+    animation: pulse 2.5s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+
+  /* ── HERO ── */
   #hero {
-    padding: 90px 48px 80px;
+    padding: 80px 52px 70px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 64px;
     align-items: center;
-    max-width: 1100px;
+    max-width: 1120px;
     margin: 0 auto;
+    position: relative;
   }
- 
-  .hero-left {}
- 
+
+  /* floating blobs behind hero */
+  #hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -80px;
+    width: 420px; height: 420px;
+    background: radial-gradient(circle at 40% 40%, rgba(109,213,224,0.3), transparent 65%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+  }
+  #hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -60px;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(33,118,174,0.15), transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+  }
+
   .hero-badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     background: var(--accent-light);
-    color: var(--accent);
-    font-size: 12px;
+    color: var(--accent2);
+    font-size: 11px;
     font-weight: 600;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
-    padding: 6px 14px;
+    padding: 6px 16px;
     border-radius: 20px;
     margin-bottom: 24px;
+    border: 1px solid rgba(33,118,174,0.2);
   }
- 
-  .hero-badge::before {
-    content: '';
-    width: 7px; height: 7px;
-    background: var(--accent);
+
+  .hero-badge-dot {
+    width: 6px; height: 6px;
+    background: var(--accent3);
     border-radius: 50%;
+    animation: pulse 2s infinite;
   }
- 
+
   h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(44px, 5vw, 64px);
-    line-height: 1.1;
-    letter-spacing: -1.5px;
+    font-size: clamp(44px, 5vw, 66px);
+    line-height: 1.08;
+    letter-spacing: -2px;
     color: var(--text);
-    margin-bottom: 20px;
+    margin-bottom: 22px;
   }
- 
+
   h1 em {
-    color: var(--accent);
+    color: var(--accent2);
     font-style: italic;
+    position: relative;
   }
- 
+
+  h1 em::after {
+    content: '';
+    position: absolute;
+    bottom: 4px; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent3), transparent);
+    border-radius: 2px;
+  }
+
   .hero-sub {
     color: var(--muted);
     font-size: 16px;
     max-width: 400px;
     margin-bottom: 36px;
     line-height: 1.75;
-	.container {
-}
   }
- 
+
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
- 
+
   .btn {
-    padding: 12px 24px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    padding: 12px 26px;
+    font-family: 'DM Sans', sans-serif;
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
     text-decoration: none;
-    border-radius: 8px;
-    transition: all 0.2s;
-    display: inline-block;
+    border-radius: 10px;
+    transition: all 0.22s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
   }
- 
-  .btn-primary { background: var(--accent); color: #fff; border: none; }
-  .btn-primary:hover { background: #245a41; transform: translateY(-1px); }
- 
-  .btn-ghost { background: transparent; color: var(--text); border: 1.5px solid var(--border); }
-  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
- 
-  /* Hero card */
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent2), var(--accent));
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 16px rgba(13,59,110,0.25);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(13,59,110,0.3);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border: 1.5px solid var(--border);
+  }
+  .btn-ghost:hover {
+    border-color: var(--accent3);
+    color: var(--accent2);
+    background: var(--accent-light);
+  }
+
+  /* ── HERO CARD ── */
   .hero-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 20px;
+    border-radius: 24px;
     padding: 36px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+    box-shadow: 0 8px 40px rgba(13,59,110,0.08);
+    position: relative;
+    overflow: hidden;
   }
- 
+
+  .hero-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent3), var(--accent2), var(--accent));
+  }
+
   .hero-avatar {
     width: 72px; height: 72px;
-    background: var(--accent-light);
+    background: linear-gradient(135deg, var(--accent-light), var(--bg2));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -158,131 +262,157 @@
     font-size: 28px;
     color: var(--accent);
     margin-bottom: 20px;
+    border: 2px solid var(--border);
   }
- 
+
   .hero-card h2 {
     font-family: 'Playfair Display', serif;
     font-size: 22px;
     font-weight: 600;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
+    color: var(--text);
   }
- 
+
   .hero-card .card-sub {
     color: var(--muted);
     font-size: 13px;
     margin-bottom: 24px;
   }
- 
-  .info-rows { display: flex; flex-direction: column; gap: 12px; }
- 
+
+  .info-rows { display: flex; flex-direction: column; gap: 0; }
+
   .info-row {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 12px;
+    align-items: center;
+    padding: 11px 0;
     border-bottom: 1px solid var(--border);
     font-size: 13px;
+    transition: background 0.2s;
   }
- 
-  .info-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .info-row:last-child { border-bottom: none; }
   .info-label { color: var(--muted); }
   .info-value { color: var(--text); font-weight: 500; text-align: right; max-width: 55%; }
- 
-  /* Sections */
+
+  /* ── SECTIONS ── */
   .section-wrap {
-    max-width: 1100px;
+    max-width: 1120px;
     margin: 0 auto;
-    padding: 80px 48px;
+    padding: 80px 52px;
     border-top: 1px solid var(--border);
   }
- 
+
   .section-label {
     font-size: 11px;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent3);
     font-weight: 600;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
- 
+
   .section-title {
     font-family: 'Playfair Display', serif;
-    font-size: 36px;
+    font-size: 38px;
     letter-spacing: -0.8px;
     margin-bottom: 48px;
     color: var(--text);
   }
- 
-  /* TABS */
+
+  /* ── TABS ── */
   .tabs-nav {
     display: flex;
     gap: 4px;
-    background: var(--tag-bg);
-    padding: 4px;
-    border-radius: 12px;
+    background: var(--surface);
+    padding: 5px;
+    border-radius: 14px;
     margin-bottom: 40px;
     width: fit-content;
     flex-wrap: wrap;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(13,59,110,0.05);
   }
- 
+
   .tab-btn {
-    padding: 10px 22px;
+    padding: 10px 24px;
     border: none;
     background: transparent;
     color: var(--muted);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
-    border-radius: 9px;
-    transition: all 0.2s;
+    border-radius: 10px;
+    transition: all 0.22s;
     white-space: nowrap;
   }
- 
+
   .tab-btn.active {
-    background: var(--surface);
-    color: var(--accent);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    background: linear-gradient(135deg, var(--accent2), var(--accent));
+    color: #fff;
+    box-shadow: 0 3px 10px rgba(13,59,110,0.22);
   }
- 
-  .tab-btn:hover:not(.active) { color: var(--text); }
- 
-  .tab-panel { display: none; animation: fadeIn 0.3s ease; }
+
+  .tab-btn:hover:not(.active) {
+    color: var(--accent2);
+    background: var(--accent-light);
+  }
+
+  .tab-panel { display: none; animation: fadeUp 0.35s ease; }
   .tab-panel.active { display: block; }
- 
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
- 
-  /* Cards */
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── CARDS ── */
   .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
   }
- 
+
   .card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 16px;
+    border-radius: 18px;
     padding: 28px;
     transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
   }
- 
+
+  .card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent3), var(--accent2));
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+
   .card:hover {
-    border-color: var(--accent2);
-    box-shadow: 0 8px 28px rgba(45,106,79,0.1);
-    transform: translateY(-2px);
+    border-color: var(--accent3);
+    box-shadow: 0 12px 36px rgba(13,59,110,0.1);
+    transform: translateY(-4px);
   }
- 
+
+  .card:hover::before { transform: scaleX(1); }
+
   .card-icon {
-    width: 44px; height: 44px;
-    background: var(--accent-light);
-    border-radius: 10px;
+    width: 48px; height: 48px;
+    background: linear-gradient(135deg, var(--accent-light), var(--bg2));
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 22px;
     margin-bottom: 16px;
+    border: 1px solid var(--border);
   }
- 
+
   .card-title {
     font-family: 'Playfair Display', serif;
     font-size: 19px;
@@ -290,161 +420,110 @@
     margin-bottom: 8px;
     color: var(--text);
   }
- 
-  .card-desc {
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.65;
-    margin-bottom: 16px;
-  }
- 
+
+  .card-desc { color: var(--muted); font-size: 13px; line-height: 1.65; margin-bottom: 16px; }
+
   .card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
- 
+
   .tag {
     background: var(--tag-bg);
-    color: var(--muted);
+    color: var(--accent2);
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.04em;
-    padding: 3px 10px;
+    padding: 3px 11px;
     border-radius: 20px;
+    border: 1px solid rgba(33,118,174,0.15);
   }
- 
+
   .tag.highlight {
-    background: var(--accent-light);
-    color: var(--accent);
+    background: var(--accent2);
+    color: #fff;
+    border-color: transparent;
   }
- 
-  /* Achievement badge */
+
+  /* ── ACHIEVEMENTS ── */
   .achievement {
     display: flex;
     align-items: flex-start;
-    gap: 16px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px 24px;
-    margin-bottom: 12px;
-    transition: all 0.2s;
-  }
- 
-  .achievement:hover { border-color: var(--accent2); }
- 
-  .ach-icon {
-    font-size: 24px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
- 
-  .ach-title {
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--text);
-    margin-bottom: 3px;
-  }
- 
-  .ach-desc { color: var(--muted); font-size: 13px; }
- 
-  /* About */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 60px;
-    align-items: start;
-  }
- 
-  .about-bio {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    line-height: 1.7;
-    color: var(--muted);
-    font-style: italic;
-  }
- 
-  .about-bio strong { color: var(--text); font-style: normal; }
- 
-  /* Contact */
-  #contact-wrap {
-    text-align: center;
-    padding: 80px 48px 100px;
-    border-top: 1px solid var(--border);
-    max-width: 1100px;
-    margin: 0 auto;
-  }
- 
-  .contact-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(38px, 5vw, 56px);
-    letter-spacing: -1.5px;
-    margin-bottom: 16px;
-  }
- 
-  .contact-title em { color: var(--accent); font-style: italic; }
- 
-  .contact-sub { color: var(--muted); margin-bottom: 40px; font-size: 15px; }
- 
-  .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
- 
-  .contact-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 24px;
-    background: var(--surface);
-    border: 1.5px solid var(--border);
-    border-radius: 50px;
-    color: var(--text);
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
-    transition: all 0.2s;
-  }
- 
-  .contact-chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
- 
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 20px 48px;
-    display: flex;
-    justify-content: space-between;
-    color: var(--muted);
-    font-size: 12px;
-  }
- 
-  /* Scroll reveal */
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
- 
-  /* Responsive */
-  @media (max-width: 768px) {
-    nav { padding: 14px 20px; }
-    .nav-links { gap: 16px; }
-    #hero { grid-template-columns: 1fr; padding: 48px 20px 40px; gap: 32px; }
-    .section-wrap { padding: 60px 20px; }
-    .about-grid { grid-template-columns: 1fr; gap: 32px; }
-    #contact-wrap { padding: 60px 20px 80px; }
-    footer { padding: 16px 20px; flex-direction: column; gap: 4px; }
-  }
-  /* Horizontal list cards */
-  .hlist { display: flex; flex-direction: column; gap: 14px; }
- 
-  .hcard {
+    gap: 18px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 16px;
+    padding: 22px 28px;
+    margin-bottom: 14px;
+    transition: all 0.22s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .achievement::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--accent3), var(--accent2));
+    transform: scaleY(0);
+    transition: transform 0.3s;
+    transform-origin: top;
+  }
+
+  .achievement:hover { border-color: var(--accent3); box-shadow: 0 6px 24px rgba(61,184,200,0.12); }
+  .achievement:hover::before { transform: scaleY(1); }
+
+  /* expandable description */
+  .ach-short { color: var(--muted); font-size: 13px; margin-bottom: 0; }
+  .ach-full  { display: none; color: var(--muted); font-size: 13px; line-height: 1.7; margin-top: 10px; }
+  .ach-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--accent2);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .ach-toggle:hover { background: var(--accent-light); border-color: var(--accent3); }
+
+  .ach-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+    margin-top: 3px;
+    width: 48px; height: 48px;
+    background: var(--accent-light);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+  }
+
+  .ach-title { font-weight: 600; font-size: 15px; color: var(--text); margin-bottom: 4px; }
+
+  /* ── HLIST / GRADE CARDS ── */
+  .hlist { display: flex; flex-direction: column; gap: 16px; }
+
+  .hcard {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
     padding: 24px 28px;
     display: flex;
     align-items: flex-start;
     gap: 32px;
     transition: all 0.25s;
   }
- 
+
   .hcard:hover {
-    border-color: var(--accent2);
-    box-shadow: 0 6px 24px rgba(45,106,79,0.08);
+    border-color: var(--accent3);
+    box-shadow: 0 6px 24px rgba(13,59,110,0.08);
     transform: translateX(4px);
   }
- 
+
   .hcard-left {
     display: flex;
     align-items: center;
@@ -452,176 +531,435 @@
     min-width: 220px;
     flex-shrink: 0;
   }
- 
+
   .hcard-icon {
-    width: 44px; height: 44px;
-    background: var(--accent-light);
-    border-radius: 10px;
+    width: 48px; height: 48px;
+    background: linear-gradient(135deg, var(--accent-light), var(--bg2));
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 20px;
     flex-shrink: 0;
+    border: 1px solid var(--border);
   }
- 
-  .hcard-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 3px;
-  }
- 
-  .hcard-sub { font-size: 12px; color: var(--muted); }
- 
+
+  .hcard-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+  .hcard-sub   { font-size: 12px; color: var(--muted); }
   .hcard-right { flex: 1; }
- 
-  .hcard-desc { color: var(--muted); font-size: 13px; line-height: 1.65; }
- 
+  .hcard-desc  { color: var(--muted); font-size: 13px; line-height: 1.65; }
+
   /* Grade bars */
-  .grade-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
-  }
- 
-  .grade-label {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text);
-    width: 32px;
-    flex-shrink: 0;
-  }
- 
+  .grade-row { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; }
+  .grade-label { font-size: 12px; font-weight: 600; color: var(--text); width: 38px; flex-shrink: 0; }
+
   .grade-bar-wrap {
-    flex: 1;
-    height: 6px;
+    flex: 1; height: 7px;
     background: var(--tag-bg);
     border-radius: 99px;
     overflow: hidden;
   }
- 
+
   .grade-bar {
     height: 100%;
     width: 0;
-    background: var(--accent);
+    background: linear-gradient(90deg, var(--accent3), var(--accent2));
     border-radius: 99px;
-    transition: width 1s cubic-bezier(0.16,1,0.3,1);
+    transition: width 1.2s cubic-bezier(0.16,1,0.3,1);
   }
- 
-  .grade-num {
-    font-size: 12px;
+
+  .grade-bar.lower { background: linear-gradient(90deg, var(--accent4), var(--accent3)); }
+
+  .grade-num { font-size: 12px; color: var(--muted); width: 32px; text-align: right; flex-shrink: 0; }
+
+  @media (max-width: 768px) { .hcard { flex-direction: column; gap: 16px; } .hcard-left { min-width: unset; } }
+
+  /* ── ABOUT ── */
+  .about-bio {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    line-height: 1.72;
     color: var(--muted);
-    width: 28px;
-    text-align: right;
-    flex-shrink: 0;
+    font-style: italic;
+    padding: 28px 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    margin-bottom: 48px;
+    position: relative;
   }
- 
-  @media (max-width: 768px) {
-    .hcard { flex-direction: column; gap: 16px; }
-    .hcard-left { min-width: unset; }
+
+  .about-bio::before {
+    content: '"';
+    position: absolute;
+    top: -8px; left: 20px;
+    font-size: 80px;
+    color: var(--accent3);
+    opacity: 0.25;
+    line-height: 1;
+    font-family: 'Playfair Display', serif;
   }
- 
-  /* About sections */
+
+  .about-bio strong { color: var(--text); font-style: normal; }
+
   .about-section {
     max-width: 860px;
     margin: 0 auto 48px;
     border: 1px solid var(--border);
-    border-radius: 16px;
+    border-radius: 18px;
     overflow: hidden;
   }
 
   .about-section-label {
-    background: var(--accent-light);
+    background: linear-gradient(135deg, var(--accent-light), var(--bg2));
     color: var(--accent);
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     padding: 14px 24px;
     border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
   .about-section-body {
     padding: 24px;
     background: var(--surface);
-    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 15px;
     color: var(--muted);
     line-height: 1.75;
   }
-
-  .about-section-body p {
-    margin-bottom: 12px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 15px;
-    color: var(--muted);
-  }
-
+  .about-section-body p { margin-bottom: 12px; }
   .about-section-body p:last-child { margin-bottom: 0; }
 
-  .strength-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 16px;
-  }
+  .strength-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
 
   .strength-item {
-    background: var(--accent-light);
+    background: var(--surface2);
     border-radius: 12px;
     padding: 18px 20px;
-    border-left: 3px solid var(--accent);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent2);
+    transition: transform 0.2s, box-shadow 0.2s;
   }
 
-  .strength-item.weakness {
-    background: #fff8f0;
-    border-left-color: #e08c3a;
+  .strength-item:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(13,59,110,0.08); }
+
+  .strength-item.weakness { border-left-color: #2176ae; background: #e8f4fc; }
+  .strength-item.goal     { border-left-color: #1c6870; background: #d6f0f4; }
+
+  /* Distinct shades for strengths */
+  .strength-grid .strength-item:not(.weakness):not(.goal):nth-child(1) { background: #daeef8; border-left-color: #0d3b6e; }
+  .strength-grid .strength-item:not(.weakness):not(.goal):nth-child(2) { background: #cce6f5; border-left-color: #2176ae; }
+  .strength-grid .strength-item:not(.weakness):not(.goal):nth-child(3) { background: #c4e8f5; border-left-color: #1c7ea0; }
+  .strength-grid .strength-item:not(.weakness):not(.goal):nth-child(4) { background: #bbdff0; border-left-color: #1c6870; }
+  .strength-grid .strength-item:not(.weakness):not(.goal):nth-child(5) { background: #b2dced; border-left-color: #3db8c8; }
+
+  /* Distinct shades for weaknesses */
+  .strength-grid .strength-item.weakness:nth-child(1) { background: #ddeefa; border-left-color: #0d3b6e; }
+  .strength-grid .strength-item.weakness:nth-child(2) { background: #cce6f5; border-left-color: #2176ae; }
+  .strength-grid .strength-item.weakness:nth-child(3) { background: #bfe0f2; border-left-color: #1c7ea0; }
+
+  /* Distinct shades for goals */
+  .strength-grid .strength-item.goal:nth-child(1) { background: #cdeef4; border-left-color: #1c6870; }
+  .strength-grid .strength-item.goal:nth-child(2) { background: #b8e6ee; border-left-color: #3db8c8; }
+
+  .strength-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  .strength-desc  { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* ── FUN FACT TICKER ── */
+  .ticker-wrap {
+    background: linear-gradient(135deg, var(--accent), #1c5080);
+    color: #fff;
+    padding: 14px 52px;
+    overflow: hidden;
+    position: relative;
   }
 
-  .strength-item.goal {
-    background: #f0f4ff;
-    border-left-color: #4a6fa8;
+  .ticker-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent4);
+    font-weight: 700;
+    margin-bottom: 2px;
   }
 
-  .strength-title {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 6px;
+  .ticker-track {
+    display: flex;
+    gap: 64px;
+    animation: ticker 28s linear infinite;
+    white-space: nowrap;
+    will-change: transform;
   }
 
-  .strength-desc {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .ticker-item {
     font-size: 13px;
-    color: var(--muted);
-    line-height: 1.6;
+    font-weight: 500;
+    opacity: 0.9;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
   }
 
+  .ticker-item::before {
+    content: '◆';
+    color: var(--accent4);
+    font-size: 8px;
+  }
+
+  /* ── CONTACT ── */
+  #contact-wrap {
+    text-align: center;
+    padding: 80px 52px 100px;
+    border-top: 1px solid var(--border);
+    max-width: 1120px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  #contact-wrap::before {
+    content: '';
+    position: absolute;
+    top: 60px; left: 50%;
+    transform: translateX(-50%);
+    width: 500px; height: 200px;
+    background: radial-gradient(ellipse, rgba(109,213,224,0.15), transparent 70%);
+    pointer-events: none;
+  }
+
+  .contact-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 5vw, 58px);
+    letter-spacing: -1.5px;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+
+  .contact-title em { color: var(--accent2); font-style: italic; }
+
+  .contact-sub { color: var(--muted); margin-bottom: 40px; font-size: 15px; }
+
+  .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+  .contact-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 26px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 50px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.22s;
+    box-shadow: 0 2px 8px rgba(13,59,110,0.05);
+  }
+
+  .contact-chip:hover {
+    border-color: var(--accent3);
+    color: var(--accent2);
+    background: var(--accent-light);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(13,59,110,0.12);
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 22px 52px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    font-size: 12px;
+    background: var(--surface);
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* staggered children */
+  .reveal-stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .reveal-stagger.visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0.05s; }
+  .reveal-stagger.visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.13s; }
+  .reveal-stagger.visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.21s; }
+  .reveal-stagger.visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.29s; }
+
+  /* ── PROGRESS RING on hero ── */
+  .stat-pills {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+  }
+
+  .stat-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 18px;
+    min-width: 80px;
+    transition: all 0.2s;
+  }
+
+  .stat-pill:hover {
+    border-color: var(--accent3);
+    background: var(--accent-light);
+    transform: translateY(-2px);
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--accent2);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+
+  /* ── TOOLTIP hover card ── */
+  .tooltip-wrap { position: relative; display: inline-block; }
+  .tooltip-card {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) scale(0.9);
+    background: var(--accent);
+    color: #fff;
+    font-size: 12px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.18s;
+    z-index: 10;
+    font-weight: 500;
+    box-shadow: 0 4px 16px rgba(13,59,110,0.25);
+  }
+  .tooltip-card::after {
+    content: '';
+    position: absolute;
+    top: 100%; left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--accent);
+  }
+  .tooltip-wrap:hover .tooltip-card { opacity: 1; transform: translateX(-50%) scale(1); }
+
+  /* ── DECORATIVE SHAPES ── */
+  .deco-shape {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* page-level shape wrapper so shapes don't clip sections */
+  .shapes-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  /* section-relative shapes */
+  .section-shapes {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  /* ensure section content stays above shapes */
+  .section-wrap, #hero, #contact-wrap { position: relative; z-index: 1; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .nav-links { gap: 16px; }
+    #hero { grid-template-columns: 1fr; padding: 48px 20px 40px; gap: 32px; }
+    .section-wrap { padding: 60px 20px; }
+    #contact-wrap { padding: 60px 20px 80px; }
+    footer { padding: 16px 20px; flex-direction: column; gap: 4px; }
+    .ticker-wrap { padding: 14px 20px; }
+  }
 </style>
 </head>
 <body>
- 
+
+<!-- Cursor glow -->
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- ── DECORATIVE SHAPES (fixed layer behind everything) ── -->
+<div class="shapes-layer" aria-hidden="true">
+  <!-- top-right jagged blob like cover -->
+  <svg style="position:absolute;top:-30px;right:-40px;width:340px;opacity:0.55" viewBox="0 0 340 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M220 0 L340 0 L340 120 L300 100 L340 160 L300 200 L340 240 L300 280 L340 340 L280 380 L240 340 L200 380 L170 330 L200 280 L160 240 L190 190 L150 150 L180 100 L150 60 L200 40 Z" fill="#3db8c8" opacity="0.18"/>
+    <path d="M240 0 L340 0 L340 90 L310 75 L340 130 L310 170 L340 210 L310 250 L340 310 L290 360 L260 310 L230 360 L200 310 L220 260 L185 220 L215 175 L180 135 L210 90 L185 50 Z" fill="#2176ae" opacity="0.13"/>
+  </svg>
+  <!-- bottom-left organic blob -->
+  <svg style="position:absolute;top:520px;left:-60px;width:220px;opacity:0.5" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M110 10 C160 10 210 50 210 110 C210 160 170 210 110 210 C60 210 10 175 10 120 C10 55 60 10 110 10 Z" fill="#1c6870" opacity="0.25"/>
+    <path d="M90 30 C130 20 185 55 190 100 C195 148 160 195 105 198 C55 201 15 160 20 108 C26 56 50 40 90 30Z" fill="#3db8c8" opacity="0.18"/>
+  </svg>
+  <!-- mid-right triangle -->
+  <svg style="position:absolute;top:700px;right:20px;width:90px;opacity:0.55" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="0,55 90,0 90,110" fill="#1c6870"/>
+  </svg>
+  <!-- small teal circle mid-right -->
+  <svg style="position:absolute;top:820px;right:130px;width:60px;opacity:0.45" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="30" cy="30" r="30" fill="#6dd5e0"/>
+  </svg>
+</div>
+
+<!-- ── NAV ── -->
 <nav>
   <div class="logo">Kiran Cheng.</div>
   <div class="nav-links">
+    <div class="nav-dot"></div>
     <a href="#pursuits">Pursuits</a>
     <a href="#about">About</a>
-    <a href="#contact">Contact</a>
+    <a href="#contact-wrap">Contact</a>
   </div>
 </nav>
- 
-<!-- Hero -->
+
+<!-- ── HERO ── -->
 <div id="hero">
   <div class="hero-left">
-    <div class="hero-badge">Student · Singapore</div>
+    <div class="hero-badge"><span class="hero-badge-dot"></span>Student · Singapore 🇸🇬</div>
     <h1>Hi, I'm<br><em>Kiran Cheng</em><br>Shou Shan.</h1>
-    <p class="hero-sub">A student from Singapore with a love for art, science, and learning. Welcome to my personal portfolio.</p>
+    <p class="hero-sub">A student from Singapore with a love for art, science, and learning. Welcome to my personal portfolio — a glimpse into my life.</p>
     <div class="hero-actions">
-      <a href="#pursuits" class="btn btn-primary">See my work</a>
+      <a href="#pursuits" class="btn btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        See my work
+      </a>
       <a href="https://www.instagram.com/chengkira2010/" target="_blank" class="btn btn-ghost">Instagram</a>
     </div>
+
+    <div class="stat-pills reveal-stagger" style="display:none">
+      <div class="stat-pill tooltip-wrap">
+        <span class="stat-num">🥈</span>
+        <span class="stat-label">NUS Geo</span>
+        <div class="tooltip-card">Silver — Individual category</div>
+      </div>
+    </div>
   </div>
- 
+
   <div class="hero-card reveal">
     <div class="hero-avatar">K</div>
     <h2>Kiran Cheng Shou Shan</h2>
@@ -629,7 +967,7 @@
     <div class="info-rows">
       <div class="info-row">
         <span class="info-label">Primary school</span>
-        <span class="info-value">River Valley Primary School</span>
+        <span class="info-value">River Valley Primary</span>
       </div>
       <div class="info-row">
         <span class="info-label">Secondary school</span>
@@ -640,43 +978,77 @@
         <span class="info-value">Art, Science, Academics</span>
       </div>
       <div class="info-row">
-        <span class="info-label">Instagram</span>
-        <span class="info-value"><a href="https://www.instagram.com/chengkira2010/" target="_blank" style="color:var(--accent);text-decoration:none;">@chengkira2010</a></span>
+        <span class="info-label">Currently</span>
+        <span class="info-value">Year 3 · Sec 3</span>
       </div>
-	  <img src="Leafbackground.png" style="width:100%; height:auto; border-radius:12px; margin-top:16px;">
+      <div class="info-row">
+        <span class="info-label">Instagram</span>
+        <span class="info-value"><a href="https://www.instagram.com/chengkira2010/" target="_blank" style="color:var(--accent2);text-decoration:none;font-weight:600;">@chengkira2010</a></span>
+      </div>
     </div>
   </div>
 </div>
- 
-<!-- Pursuits (Tabbed) -->
-<div class="section-wrap" id="pursuits">
+
+<!-- ── TICKER ── -->
+<div class="ticker-wrap" style="position:relative;overflow:hidden;">
+  <svg style="position:absolute;right:0;top:0;height:100%;opacity:0.12;pointer-events:none" viewBox="0 0 120 60" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="120,0 120,60 0,60" fill="white"/>
+  </svg>
+  <div class="ticker-track" id="tickerTrack">
+    <span class="ticker-item">Art Special Programme — featured on school website</span>
+    <span class="ticker-item">NUS Geography Challenge — Silver, Individual</span>
+    <span class="ticker-item">Bicultural Studies Programme — Taiwan Immersion</span>
+    <span class="ticker-item">GPA 3.88 in Year 3 — personal best</span>
+    <span class="ticker-item">Dunman High School — one of Singapore's top secondary schools</span>
+    <span class="ticker-item">All-rounder with curiosity across art, science &amp; geopolitics</span>
+    <span class="ticker-item">Built this website from scratch — yes, I learnt CSS for this</span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker-item">Art Special Programme — featured on school website</span>
+    <span class="ticker-item">NUS Geography Challenge — Silver, Individual</span>
+    <span class="ticker-item">Bicultural Studies Programme — Taiwan Immersion</span>
+    <span class="ticker-item">GPA 3.88 in Year 3 — personal best</span>
+    <span class="ticker-item">Dunman High School — one of Singapore's top secondary schools</span>
+    <span class="ticker-item">All-rounder with curiosity across art, science &amp; geopolitics</span>
+    <span class="ticker-item">Built this website from scratch — yes, I learnt CSS for this</span>
+  </div>
+</div>
+
+<!-- ── PURSUITS ── -->
+<div class="section-wrap" id="pursuits" style="position:relative;overflow:hidden;">
+  <!-- section shapes -->
+  <svg style="position:absolute;bottom:-40px;right:-30px;width:200px;opacity:0.18;pointer-events:none;z-index:0" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M40 10 L160 10 L200 80 L160 150 L40 150 L0 80 Z" fill="#0d3b6e"/>
+  </svg>
+  <svg style="position:absolute;top:30px;left:-50px;width:160px;opacity:0.13;pointer-events:none;z-index:0" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="80" cy="80" rx="80" ry="55" fill="#3db8c8"/>
+  </svg>
   <div class="section-label">What I do</div>
   <div class="section-title">My pursuits</div>
- 
+
   <div class="tabs-nav">
-    <button class="tab-btn active" onclick="switchTab('education', this)"> Education</button>
-    <button class="tab-btn" onclick="switchTab('academic', this)"> Academic</button>
-    <button class="tab-btn" onclick="switchTab('Electives', this)"> Electives</button>
+    <button class="tab-btn active" onclick="switchTab('education', this)">🏫 Education</button>
+    <button class="tab-btn" onclick="switchTab('academic', this)">📊 Academic</button>
+    <button class="tab-btn" onclick="switchTab('Electives', this)">🏆 Electives</button>
   </div>
- 
+
   <!-- Education Tab -->
   <div class="tab-panel active" id="tab-education">
-    <div class="cards-grid">
-      <div class="card reveal">
+    <div class="cards-grid reveal-stagger">
+      <div class="card">
         <div class="card-icon">🏫</div>
         <div class="card-title">River Valley Primary</div>
         <div class="card-desc">My primary education at River Valley Primary School, where I developed a strong foundation in core subjects and discovered my love for learning.</div>
-        <img src="RiverValley.jpg" alt="River Valley Primary School" style="width:100%; height:auto; border-radius:10px; margin:12px 0;">
+        <img src="RiverValley.jpg" alt="River Valley Primary School" style="width:100%; height:auto; border-radius:12px; margin:14px 0;">
         <div class="card-tags">
           <span class="tag highlight">Primary School</span>
           <span class="tag">Singapore</span>
         </div>
       </div>
-      <div class="card reveal">
-        <div class="card-icon">🏫</div>
+      <div class="card">
+        <div class="card-icon">🎓</div>
         <div class="card-title">Dunman High School</div>
         <div class="card-desc">Currently studying at Dunman High School, one of Singapore's top secondary schools. Pursuing a well-rounded education with focus on both arts and sciences.</div>
-        <img src="DunmanHigh.jpg" alt="Dunman High School" style="width:100%; height:auto; border-radius:10px; margin:12px 0;">
+        <img src="DunmanHigh.jpg" alt="Dunman High School" style="width:100%; height:auto; border-radius:12px; margin:14px 0;">
         <div class="card-tags">
           <span class="tag highlight">Secondary School</span>
           <span class="tag">Singapore</span>
@@ -684,11 +1056,10 @@
       </div>
     </div>
   </div>
- 
+
   <!-- Academic Tab -->
   <div class="tab-panel" id="tab-academic">
     <div class="hlist">
- 
       <div class="hcard reveal">
         <div class="hcard-left">
           <div class="hcard-icon">✏️</div>
@@ -700,14 +1071,14 @@
         <div class="hcard-right">
           <div class="grade-row"><span class="grade-label">A+</span><div class="grade-bar-wrap"><div class="grade-bar" style="--w:54%"></div></div><span class="grade-num">57</span></div>
           <div class="grade-row"><span class="grade-label">A</span><div class="grade-bar-wrap"><div class="grade-bar" style="--w:40%"></div></div><span class="grade-num">40</span></div>
-          <div class="grade-row"><span class="grade-label">B+</span><div class="grade-bar-wrap"><div class="grade-bar" style="--w:8%;background:var(--accent2)"></div></div><span class="grade-num">5</span></div>
-          <div class="grade-row"><span class="grade-label">B</span><div class="grade-bar-wrap"><div class="grade-bar" style="--w:4%;background:var(--accent2)"></div></div><span class="grade-num">3</span></div>
+          <div class="grade-row"><span class="grade-label">B+</span><div class="grade-bar-wrap"><div class="grade-bar lower" style="--w:8%"></div></div><span class="grade-num">5</span></div>
+          <div class="grade-row"><span class="grade-label">B</span><div class="grade-bar-wrap"><div class="grade-bar lower" style="--w:4%"></div></div><span class="grade-num">3</span></div>
         </div>
       </div>
- 
+
       <div class="hcard reveal">
         <div class="hcard-left">
-          <div class="hcard-icon">📊</div>
+          <div class="hcard-icon">📈</div>
           <div>
             <div class="hcard-title"><em>Overall GPA</em></div>
             <div class="hcard-sub">Secondary school · Weighted subjects</div>
@@ -716,94 +1087,87 @@
         <div class="hcard-right">
           <div class="grade-row"><span class="grade-label">Year 1</span><div class="grade-bar-wrap"><div class="grade-bar" style="--w:75%"></div></div><span class="grade-num">3.79</span></div>
           <div class="grade-row"><span class="grade-label">Year 2</span><div class="grade-bar-wrap"><div class="grade-bar" style="--w:76%"></div></div><span class="grade-num">3.80</span></div>
-          <div class="grade-row"><span class="grade-label">Year 3</span><div class="grade-bar-wrap"><div class="grade-bar" style="--w:80%"></div></div><span class="grade-num">3.88</span></div>
+          <div class="grade-row"><span class="grade-label">Year 3</span><div class="grade-bar-wrap"><div class="grade-bar" style="--w:80%"></div></div><span class="grade-num">3.88 ↑</span></div>
         </div>
       </div>
- 
-      <!-- TEMPLATE: copy this block to add a new academic entry -->
-      <div class="hcard reveal">
-        <div class="hcard-left">
-          <div class="hcard-icon">📝</div>
-          <div>
-            <div class="hcard-title">-</div>
-            <div class="hcard-sub">-</div>
-          </div>
-        </div>
-        <div class="hcard-right">
-          <div class="hcard-desc">-</div>
-          <div class="card-tags" style="margin-top:12px"><span class="tag highlight">-</span></div>
-        </div>
-      </div>
- 
     </div>
   </div>
- 
-  
- 
-  <!-- Eledctives Tab -->
+
+  <!-- Electives Tab -->
   <div class="tab-panel" id="tab-Electives">
+
     <div class="achievement reveal">
       <div class="ach-icon">🖌️</div>
       <div>
-        <div class="ach-title">Art special programme (ASP)</div>
-        <div class="ach-desc">The art special progmmme was enriching not only in developing my technical competencies in art, but also in teaching my transferable skills like acute observation and attention to detail. These skills were valuable in many other areas, such as analysing data and spotting trends for Geography. Such habits will stay with me both in my art making processes and in my academic pursuits.</div>
-		<img src="ASP.png" alt="Art Special Programme" style="width:100%; height:auto; border-radius:10px; margin:12px 0;">
-		<a href> https://www.dunmanhigh.moe.edu.sg/academic/aesthetics-programme/ </a href>
-       <div class="ach-desc"><em>I got featured on the school website</em><p>The Art Special Programme (ASP) is a platform for students who are committed and passionate about Art to further their Art education beyond the compulsory Art subject. Taken as an examinable subject in Years 1-4, it provides students with deeper understanding of various art elements and design principles, and possibilities to explore a wider range of media and techniques. ASP students are also given opportunities to visit museums and platforms to showcase their talents through exhibitions.</p>
-	  </div>
-	  </div>
+        <div class="ach-title">Art Special Programme (ASP)</div>
+        <div class="ach-desc">The Art Special Programme was enriching not only in developing my technical competencies in art, but also in teaching transferable skills like acute observation and attention to detail. These skills were valuable in many other areas, such as analysing data and spotting trends for Geography. Such habits will stay with me both in my art making processes and in my academic pursuits.</div>
+        <img src="ASP.png" alt="Art Special Programme" style="width:100%; height:auto; border-radius:12px; margin:12px 0;">
+        <a href="https://www.dunmanhigh.moe.edu.sg/academic/aesthetics-programme/" target="_blank" style="color:var(--accent2);font-size:13px;font-weight:600;">dunmanhigh.moe.edu.sg — ASP ↗</a>
+        <div class="ach-desc" style="margin-top:10px;"><em>I got featured on the school website.</em>
+          <p style="margin-top:8px;">The Art Special Programme (ASP) is a platform for students who are committed and passionate about Art to further their Art education beyond the compulsory Art subject. Taken as an examinable subject in Years 1–4, it provides students with deeper understanding of various art elements and design principles, and possibilities to explore a wider range of media and techniques. ASP students are also given opportunities to visit museums and platforms to showcase their talents through exhibitions.</p>
+        </div>
+      </div>
     </div>
+
     <div class="achievement reveal">
       <div class="ach-icon">📖</div>
       <div>
-        <div class="ach-title">Bicultural studies programme(BSP)</div>
-        <div class="ach-desc">The bicultural studies programme was an eye opening experience as I learnt more about geopolitical tensions, especially the Sino-American tensions.The highlight wasthat theclasses were conducted in Chinese only, giving me the opportunity to enhance my mother tongue abilities. This programme was also particularly valuable as it provided overseas experience opportunities. I  personally attended the Taiwan immersion programme which opened my eyes to the wider markets out there. I was also glad to learn more about big tech and  manufacturing companies there, am experience I would not have had if I went by myself. Overall, BSP was extremely enriching and honed my language and understanding skills. It also furthur improved my attention to detail needed to understand political nuances.</div>
-		<img src="BSP.png" alt="Bicultural Studies Programme" style="width:100%; height:auto; border-radius:10px; margin:12px 0;">
-		<a href>https://www.dunmanhigh.moe.edu.sg/academic/mtl/</a href>
-		<div class="ach-desc">The Bicultural Studies Programme (MOE) [BSP] is a 4-year programme offered by MOE that spans from Year 3 (Sec 3) to Year 6 (JC 2). It aims to develop bicultural and bilingual talents who can effectively interact with China and the West and have the capacity to engage in key issues relating to contemporary China with cross-cultural perspectives.
- 
-Students from the BSP will jointly participate in two signature activities organised by MOE, including a three-day camp held locally during the June holidays of Year 3 and the annual BSP Symposium during the March holidays of Year 4 and 5. School based enrichment programmes include overseas immersions, learning journeys, inter-school forums, and lectures.</div>
- 
-	 </div>
+        <div class="ach-title">Bicultural Studies Programme (BSP)</div>
+        <div class="ach-desc">The Bicultural Studies Programme was an eye-opening experience as I learnt more about geopolitical tensions, especially the Sino-American tensions. The highlight was that the classes were conducted in Chinese only, giving me the opportunity to enhance my mother tongue abilities. This programme was also particularly valuable as it provided overseas experience opportunities. I personally attended the Taiwan immersion programme which opened my eyes to the wider markets out there. I was also glad to learn more about big tech and manufacturing companies there — an experience I would not have had if I went by myself. Overall, BSP was extremely enriching and honed my language and understanding skills. It also further improved my attention to detail needed to understand political nuances.</div>
+        <img src="BSP.png" alt="Bicultural Studies Programme" style="width:100%; height:auto; border-radius:12px; margin:12px 0;">
+        <a href="https://www.dunmanhigh.moe.edu.sg/academic/mtl/" target="_blank" style="color:var(--accent2);font-size:13px;font-weight:600;">dunmanhigh.moe.edu.sg — BSP ↗</a>
+        <div class="ach-desc" style="margin-top:10px;">The Bicultural Studies Programme (MOE) [BSP] is a 4-year programme offered by MOE that spans from Year 3 (Sec 3) to Year 6 (JC 2). It aims to develop bicultural and bilingual talents who can effectively interact with China and the West and have the capacity to engage in key issues relating to contemporary China with cross-cultural perspectives.
+          <p style="margin-top:8px;">Students from the BSP will jointly participate in two signature activities organised by MOE, including a three-day camp held locally during the June holidays of Year 3 and the annual BSP Symposium during the March holidays of Year 4 and 5. School-based enrichment programmes include overseas immersions, learning journeys, inter-school forums, and lectures.</p>
+        </div>
+      </div>
     </div>
+
     <div class="achievement reveal">
       <div class="ach-icon">🎖️</div>
       <div>
         <div class="ach-title">NUS Geography Challenge</div>
-        <div class="ach-desc"><p>This was really one of the highlights of my year and I feel it is one of the best opportunities I have had</p>Although we had not achieved the resutls we wanted, I managed to secure a silverinthe individual category. This was a disappointment to us all. Howeve, this programme really tested my determination and resilience with two training sessions perweeek learning about new concepts. I really appreciatethe  great guidance of our teachers, Ms Ng and Ms Pear and the friendsI madein this  programme. This is certainly not the end to my Geography journey as I will have the Geeographers spirit of inquisitivity in me forever. It also let me widen my options to  consider taking Geography instead of Economics, but I am still deciding</div>.
-		<img src="NUSGeography.jpg" alt="NUS Geography Challenge" style="width:100%; height:auto; border-radius:10px; margin:12px 0;">
-		<a href>https://nusgeographychallenge.wordpress.com/ </a href>
-		<div class="ach-desc">NUS Geography Challenge is an annual Geography competition organised by the NUS Department of Geography and NUS Geographical Society, with support from the Ministry of Education. This year, we are proud to continue the 30th iteration of the Geography Challenge in 2026. NUS GC continues our quest to ignite the passion of secondary school students and inspire them to develop a keen interest in the dynamic discipline of Geography. Through this challenge, students will learn about world issues and how Geography can empower them to respond to these issues.
-	  </div>
-	  </div>
+        <div class="ach-desc"><p>This was really one of the highlights of my year and I feel it is one of the best opportunities I have had.</p>
+        <p style="margin-top:8px;">Although we had not achieved the results we wanted, I managed to secure a Silver in the individual category. This was a disappointment to us all. However, this programme really tested my determination and resilience with two training sessions per week learning about new concepts. I really appreciate the great guidance of our teachers, Ms Ng and Ms Pear, and the friends I made in this programme. This is certainly not the end to my Geography journey as I will have the Geographer's spirit of inquisitivity in me forever. It also let me widen my options to consider taking Geography instead of Economics, but I am still deciding.</p>
+        </div>
+        <img src="NUSGeography.jpg" alt="NUS Geography Challenge" style="width:100%; height:auto; border-radius:12px; margin:12px 0;">
+        <a href="https://nusgeographychallenge.wordpress.com/" target="_blank" style="color:var(--accent2);font-size:13px;font-weight:600;">nusgeographychallenge.wordpress.com ↗</a>
+        <div class="ach-desc" style="margin-top:10px;">NUS Geography Challenge is an annual Geography competition organised by the NUS Department of Geography and NUS Geographical Society, with support from the Ministry of Education. This year, we are proud to continue the 30th iteration of the Geography Challenge in 2026. NUS GC continues our quest to ignite the passion of secondary school students and inspire them to develop a keen interest in the dynamic discipline of Geography. Through this challenge, students will learn about world issues and how Geography can empower them to respond to these issues.</div>
+      </div>
     </div>
-	 <div class="achievement reveal">
+
+    <div class="achievement reveal">
       <div class="ach-icon">🎖️</div>
       <div>
         <div class="ach-title">Still awaiting new opportunities</div>
-        <div class="ach-desc">-</div>
+        <div class="ach-desc">—</div>
       </div>
     </div>
+
   </div>
 </div>
- 
-<!-- About -->
-<div class="section-wrap" id="about">
+
+<!-- ── ABOUT ── -->
+<div class="section-wrap" id="about" style="position:relative;overflow:hidden;">
+  <!-- section shapes -->
+  <svg style="position:absolute;top:60px;right:-20px;width:130px;opacity:0.14;pointer-events:none;z-index:0" viewBox="0 0 130 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="65,0 130,150 0,150" fill="#2176ae"/>
+  </svg>
+  <svg style="position:absolute;bottom:80px;left:-40px;width:180px;opacity:0.12;pointer-events:none;z-index:0" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="20" y="20" width="140" height="140" rx="30" fill="#3db8c8" transform="rotate(20 90 90)"/>
+  </svg>
   <div class="section-label">Who I am</div>
   <div class="section-title">About me</div>
 
-  <!-- Intro -->
   <div style="max-width:680px; margin:0 auto; text-align:center;">
     <div class="about-bio reveal">
-      I'm <strong>Kiran Cheng Shou Shan</strong>, a student from <strong>Singapore</strong> with a curiosity for the world around me. I love exploring <strong>art, science, and academics</strong> — follow me on this journey as I make choices - <strong>both big and small</strong> - throughout this journey. And yes - I learnt CSS just to make this website.
+      I'm <strong>Kiran Cheng Shou Shan</strong>, a student from <strong>Singapore</strong> with a curiosity for the world around me. I love exploring <strong>art, science, and academics</strong> — follow me on this journey as I make choices — <strong>both big and small</strong>. And yes — I learnt CSS just to make this website.
     </div>
-    <img src="Picture.png" alt="A photo" style="width:80%; height:auto; border-radius:16px; margin:28px auto 16px; display:block;">
-    <p style="color:var(--muted); font-size:13px; margin-bottom:60px; font-style:italic;">I still have not learnt how to make the picture scroll so there's only one for now</p>
+    <img src="Picture.png" alt="A photo of Kiran" style="width:80%; height:auto; border-radius:20px; margin:0 auto 14px; display:block; border:3px solid var(--border); box-shadow:0 8px 32px rgba(13,59,110,0.1);">
+    <p style="color:var(--muted); font-size:13px; margin-bottom:60px; font-style:italic;">Still figuring out how to make the picture scroll — one step at a time!</p>
   </div>
 
-  <!-- Self Introduction -->
   <div class="about-section reveal">
-    <div class="about-section-label"><h2> Self Introduction</h2></div>
+    <div class="about-section-label">👤 Self Introduction</div>
     <div class="about-section-body">
       <p>I would describe myself as more of an all-rounder. Although it means I am above average in most fields, I am still trying to find my specialty — which is why I have taken part in five electives on a range of topics.</p>
       <p>While some may call it being indecisive, each programme contributes to a unique part of myself and together, I feel enriched with new skill sets and knowledge.</p>
@@ -812,83 +1176,50 @@ Students from the BSP will jointly participate in two signature activities organ
     </div>
   </div>
 
-  <!-- Strengths -->
   <div class="about-section reveal">
-    <div class="about-section-label"> <h2>Strengths</h2></div>
+    <div class="about-section-label">💪 Strengths</div>
     <div class="about-section-body">
       <div class="strength-grid">
-        <div class="strength-item">
-          <div class="strength-title">Curiosity</div>
-          <div class="strength-desc">I enjoy learning across many different fields — from art to geopolitics — and am always eager to explore new ideas.</div>
-        </div>
-        <div class="strength-item">
-          <div class="strength-title">Attention to detail</div>
-          <div class="strength-desc">Developed through the Art Special Programme, this skill carries over into academics like Geography and data analysis.</div>
-        </div>
-		<div class="strength-item">
-          <div class="strength-title">Adaptability</div>
-          <div class="strength-desc">I am flexible to changes and do as much as I can to make sure the situation is a success</div>
-		  </div>
-        <div class="strength-item">
-          <div class="strength-title">Resilience</div>
-          <div class="strength-desc">Taking on multiple electives and intensive programmes like BSP and the NUS Geography Challenge has taught me to push through challenges.</div>
-        </div>
-		<div>
-        <div class="strength-item">
-          <div class="strength-title">Bilingual ability</div>
-          <div class="strength-desc">The BSP programme sharpened my Chinese language skills, giving me the ability to engage with content in both English and Chinese.</div>
-		  <div>
-        </div>
+        <div class="strength-item"><div class="strength-title">Curiosity</div><div class="strength-desc">I enjoy learning across many different fields — from art to geopolitics — and am always eager to explore new ideas.</div></div>
+        <div class="strength-item"><div class="strength-title">Attention to detail</div><div class="strength-desc">Developed through the Art Special Programme, this skill carries over into academics like Geography and data analysis.</div></div>
+        <div class="strength-item"><div class="strength-title">Adaptability</div><div class="strength-desc">I am flexible to changes and do as much as I can to make sure the situation is a success.</div></div>
+        <div class="strength-item"><div class="strength-title">Resilience</div><div class="strength-desc">Taking on multiple electives and intensive programmes like BSP and the NUS Geography Challenge has taught me to push through challenges.</div></div>
+        <div class="strength-item"><div class="strength-title">Bilingual ability</div><div class="strength-desc">The BSP programme sharpened my Chinese language skills, giving me the ability to engage with content in both English and Chinese.</div></div>
       </div>
     </div>
   </div>
 
-.strength-item.bitch {
-  background: #dbeafe;
-  border-color: #60a5fa;
-}
-  <!-- Weaknesses -->
   <div class="about-section reveal">
-    <div class="about-section-label"><h2> Areas I'm working on</h2></div>
+    <div class="about-section-label">🔧 Areas I'm working on</div>
     <div class="about-section-body">
       <div class="strength-grid">
-        <div class="strength-item weakness">
-          <div class="strength-title">Organisation</div>
-          <div class="strength-desc">I sometimes struggle to keep things organised. Although tasks are fufilled, sometimes they may not be to my satisfaction</div>
-        </div>
-        <div class="strength-item bitch">
-          <div class="strength-title">Finding my specialty</div>
-          <div class="strength-desc">Being an all-rounder is both a strength and a challenge — I am still figuring out which field I am most passionate about.</div>
-        </div>
-        <div class="strength-item weakness">
-          <div class="strength-title">Consistency</div>
-          <div class="strength-desc">My goal this semester is to be more organised and consistent in my habits, both in and outside of school.</div>
-        </div>
+        <div class="strength-item weakness"><div class="strength-title">Organisation</div><div class="strength-desc">I sometimes struggle to keep things organised. Although tasks are fulfilled, sometimes they may not be to my satisfaction.</div></div>
+        <div class="strength-item weakness"><div class="strength-title">Finding my specialty</div><div class="strength-desc">Being an all-rounder is both a strength and a challenge — I'm still figuring out which field I'm most passionate about.</div></div>
+        <div class="strength-item weakness"><div class="strength-title">Consistency</div><div class="strength-desc">My goal this semester is to be more organised and consistent in my habits, both in and outside of school.</div></div>
       </div>
     </div>
   </div>
 
-  <!-- Goals -->
   <div class="about-section reveal">
     <div class="about-section-label">🎯 Goals</div>
     <div class="about-section-body">
       <div class="strength-grid">
-        <div class=strength-item>
-          <div class="strength-title">Short term</div>
-          <div class="strength-desc">Be more organised this semester — hand in assignments on time and manage deadlines better as school gets more hectic.</div>
-        </div>
-        <div class=strength-item
-          <div class="strength-title">Long term</div>
-          <div class="strength-desc">Discover my specialty and decide on a path — whether that is Geography, Economics, Art, or something else entirely.</div>
-        </div>
+        <div class="strength-item goal"><div class="strength-title">Short term</div><div class="strength-desc">Be more organised this semester — hand in assignments on time and manage deadlines better as school gets more hectic.</div></div>
+        <div class="strength-item goal"><div class="strength-title">Long term</div><div class="strength-desc">Discover my specialty and decide on a path — whether that is Geography, Economics, Art, or something else entirely.</div></div>
       </div>
     </div>
   </div>
-
 </div>
- 
-<!-- Contact -->
-<div id="contact-wrap">
+
+<!-- ── CONTACT ── -->
+<div id="contact-wrap" style="position:relative;overflow:hidden;">
+  <!-- decorative shapes -->
+  <svg style="position:absolute;bottom:-20px;left:0;width:140px;opacity:0.13;pointer-events:none;z-index:0" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M70 10 C120 10 130 60 130 70 C130 110 105 130 70 130 C30 130 10 105 10 70 C10 35 20 10 70 10Z" fill="#1c6870"/>
+  </svg>
+  <svg style="position:absolute;top:40px;right:40px;width:80px;opacity:0.18;pointer-events:none;z-index:0" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="5" y="5" width="70" height="70" rx="8" fill="#3db8c8" transform="rotate(12 40 40)"/>
+  </svg>
   <div class="section-label">Say hello</div>
   <div class="contact-title">Let's <em>connect.</em></div>
   <p class="contact-sub">Find me on Instagram or check out my GitHub page.</p>
@@ -903,51 +1234,109 @@ Students from the BSP will jointly participate in two signature activities organ
     </a>
   </div>
 </div>
- 
+
 <footer>
   <span>© 2026 Kiran Cheng Shou Shan</span>
-  <span>Built with HTML & CSS · Hosted on GitHub Pages</span>
+  <span>Built with HTML &amp; CSS · Hosted on GitHub Pages</span>
 </footer>
- 
+
 <script>
-// Tab switching — btn is passed directly so it works in all browsers
+// ── Cursor glow ──
+const glow = document.getElementById('cursorGlow');
+document.addEventListener('mousemove', e => {
+  glow.style.left = e.clientX + 'px';
+  glow.style.top  = e.clientY + 'px';
+});
+
+// ── Tab switching ──
 function switchTab(name, btn) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
   btn.classList.add('active');
- 
-  // Trigger reveal for newly visible cards
   setTimeout(() => {
     document.querySelectorAll('#tab-' + name + ' .reveal').forEach(el => el.classList.add('visible'));
+    document.querySelectorAll('#tab-' + name + ' .reveal-stagger').forEach(el => el.classList.add('visible'));
     document.querySelectorAll('#tab-' + name + ' .grade-bar').forEach(bar => {
-      bar.style.width = bar.style.getPropertyValue('--w') || getComputedStyle(bar).getPropertyValue('--w');
+      bar.style.width = getComputedStyle(bar).getPropertyValue('--w') || bar.style.getPropertyValue('--w');
     });
-  }, 50);
+  }, 60);
 }
- 
-// Scroll reveal
+
+// ── Scroll reveal ──
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
   });
-}, { threshold: 0.1 });
- 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
- 
-// Animate grade bars in the first active tab on load
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
+
+// ── Grade bars on first load ──
 setTimeout(() => {
   document.querySelectorAll('.tab-panel.active .grade-bar').forEach(bar => {
-    bar.style.width = bar.style.getPropertyValue('--w') || getComputedStyle(bar).getPropertyValue('--w');
+    bar.style.width = getComputedStyle(bar).getPropertyValue('--w') || bar.style.getPropertyValue('--w');
   });
-}, 300);
- 
-// Smooth scroll
+}, 400);
+
+// ── Expandable achievements ──
+function toggleAch(btn) {
+  const full = btn.previousElementSibling;
+  const img  = full.previousElementSibling;
+  const isOpen = full.style.display === 'block';
+  full.style.display = isOpen ? 'none' : 'block';
+  if (img && img.classList.contains('ach-img')) img.style.display = isOpen ? 'none' : 'block';
+  btn.textContent = isOpen ? 'Read more ↓' : 'Read less ↑';
+}
+
+// ── Smooth scroll ──
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
     document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
   });
+});
+
+// ── Stat pill counter animation ──
+function animateCount(el, target, decimals) {
+  const start = 0;
+  const dur = 1600;
+  const startTime = performance.now();
+  function tick(now) {
+    const t = Math.min((now - startTime) / dur, 1);
+    const val = start + (target - start) * easeOut(t);
+    el.textContent = decimals ? val.toFixed(2) : Math.round(val);
+    if (t < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+const statObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const num = e.target.querySelector('.stat-num');
+      if (num && num.dataset.target) {
+        const t = parseFloat(num.dataset.target);
+        animateCount(num, t, num.dataset.decimals === '1');
+      }
+      statObs.unobserve(e.target);
+    }
+  });
+});
+
+// set data-target attributes
+document.querySelectorAll('.stat-pill').forEach(pill => {
+  const num = pill.querySelector('.stat-num');
+  if (num && !isNaN(parseFloat(num.textContent))) {
+    num.dataset.target = num.textContent;
+    num.dataset.decimals = num.textContent.includes('.') ? 1 : 0;
+    num.textContent = '0';
+    statObs.observe(pill);
+  }
 });
 </script>
 </body>
